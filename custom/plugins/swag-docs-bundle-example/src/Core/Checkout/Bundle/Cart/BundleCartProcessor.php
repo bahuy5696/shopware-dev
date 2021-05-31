@@ -230,12 +230,12 @@ class BundleCartProcessor implements CartProcessorInterface, CartDataCollectorIn
 
         switch ($bundleData->getDiscountType()) {
             case self::DISCOUNT_TYPE_ABSOLUTE:
-                $priceDefinition = new AbsolutePriceDefinition($bundleData->getDiscount() * -1, $context->getContext()->getCurrencyPrecision());
+                $priceDefinition = new AbsolutePriceDefinition($bundleData->getDiscount() * -1, null);
                 $label = 'Absolute bundle voucher';
                 break;
 
             case self::DISCOUNT_TYPE_PERCENTAGE:
-                $priceDefinition = new PercentagePriceDefinition($bundleData->getDiscount() * -1, $context->getContext()->getCurrencyPrecision());
+                $priceDefinition = new PercentagePriceDefinition($bundleData->getDiscount() * -1, null);
                 $label = sprintf('Percental bundle voucher (%s%%)', $bundleData->getDiscount());
                 break;
 
