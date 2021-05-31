@@ -44,9 +44,11 @@ class PromotionDefinition extends EntityDefinition
             (new DateField('expired_date', 'expiredDate'))->addFlags(new Required()),
             (new BoolField('is_active', 'isActive'))->addFlags(new Required()),
 
+            //translate field table language of shopware
             new TranslatedField('name'),
             new TranslationsAssociationField(SwagPromotionTranslationDefinition::class, 'swag_promotion_id'),
 
+            //foreign field table product of shopware
             (new ReferenceVersionField(ProductDefinition::class)),
             new FkField('product_id',  'productId', ProductDefinition::class),
             new ManyToOneAssociationField('product', 'product_id', ProductDefinition::class, 'id', 'true'),
