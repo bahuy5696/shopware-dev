@@ -9,6 +9,11 @@ class PromotionEntity extends Entity
 {
     use EntityIdTrait;
     /**
+     * @var string
+     */
+    protected $productId;
+
+    /**
      * @var int
      */
     protected $discountRate;
@@ -88,5 +93,23 @@ class PromotionEntity extends Entity
     {
         $this->isActive = $isActive;
     }
+
+    /**
+     * @return string
+     */
+    public function getProductId(): string
+    {
+        return $this->productId;
+    }
+
+    /**
+     * @param string $productId
+     */
+    public function setProductId(string $productId): void
+    {
+        $this->productId = $productId;
+    }
+
+
 
 }

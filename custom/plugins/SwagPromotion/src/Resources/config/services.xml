@@ -16,5 +16,16 @@
         <service id="SwagPromotion\Core\Content\Promotion\Aggregate\PromotionTranslation\SwagPromotionTranslationDefinition">
             <tag name="shopware.entity.definition" entity="swag_promotion_translation"/>
         </service>
+
+        <service id="SwagPromotion\Core\Api\PromotionController" public="true">
+            <argument id="product.repository" type="service"/>
+            <argument id="swag_promotion.repository" type="service"/>
+            <argument id="swag_promotion_translation.repository" type="service"/>
+            <argument id="language.repository" type="service"/>
+
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
     </services>
 </container>
