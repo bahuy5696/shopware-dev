@@ -31,5 +31,15 @@
         <service id="SwagPromotion\Storefront\Page\Product\Subscriber\ProductPageCriteriaSubscriber">
             <tag name="kernel.event_subscriber"/>
         </service>
+
+        <service id="SwagPromotion\Core\Checkout\Promotion\Cart\SwagPromotionCartProcess">
+            <argument type="service" id="swag_promotion.repository"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\PercentagePriceCalculator"/>
+            <argument type="service" id="Shopware\Core\Checkout\Cart\Price\QuantityPriceCalculator"/>
+
+            <!-- inject after product processor (5000) -->
+            <tag name="shopware.cart.processor" priority="4500" />
+            <tag name="shopware.cart.collector" priority="4500" />
+        </service>
     </services>
 </container>

@@ -3,9 +3,11 @@
 {% block page_product_detail_content %}
     {% if page.product.extension('promotions').elements|length > 0 %}
         {% for promotion in page.product.extension('promotions').elements%}
-            <div class="badge badge-primary">
-                {{ promotion.name }}
-            </div>
+            {% if promotion.isActive %}
+                <div class="badge badge-primary">
+                    {{ promotion.name }}
+                </div>
+            {% endif %}
         {% endfor %}
     {% endif %}
     {{ parent() }}
