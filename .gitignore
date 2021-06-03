@@ -48,7 +48,7 @@ dev-ops/locust/__pycache__/
 
 /selenium-debug.log
 chromedriver.log
-#/platform/
+/platform/
 
 ###> symfony/framework-bundle ###
 .env
