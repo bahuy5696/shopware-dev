@@ -62,6 +62,7 @@ class SwagPromotionCartProcess implements CartProcessorInterface, CartDataCollec
         }
 
         foreach ($productLineItems as $productLineItem) {
+            $price = $productLineItem->getPrice();
             $promotions = $this->getPromotions($context->getContext(), $productLineItem->getReferencedId());
 
             //add discount lineItem to product lineItem
