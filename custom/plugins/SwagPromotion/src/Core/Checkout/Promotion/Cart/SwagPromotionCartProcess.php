@@ -23,7 +23,6 @@ use Shopware\Core\System\SalesChannel\SalesChannelContext;
 
 class SwagPromotionCartProcess implements CartProcessorInterface, CartDataCollectorInterface
 {
-    public const TYPE = 'product';
     public const DISCOUNT_TYPE = 'swagpromotion-discount';
     public const DATA_KEY = 'swag_promotion-';
 
@@ -55,7 +54,8 @@ class SwagPromotionCartProcess implements CartProcessorInterface, CartDataCollec
     public function collect(CartDataCollection $data, Cart $original, SalesChannelContext $context, CartBehavior $behavior): void
     {
         /** @var LineItemCollection $productLineItems */
-        $productLineItems = $original->getLineItems()->filterType(self::TYPE);
+        $productLineItems = $original->getLineItems()->filterType(LineItem::PRODUCT_LINE_ITEM_TYPE);
+
         // no product in cart? exit
         if (\count($productLineItems) === 0) {
             return;
@@ -75,7 +75,7 @@ class SwagPromotionCartProcess implements CartProcessorInterface, CartDataCollec
     public function process(CartDataCollection $data, Cart $original, Cart $toCalculate, SalesChannelContext $context, CartBehavior $behavior): void
     {
         /** @var LineItemCollection $productLineItems */
-        $productLineItems = $original->getLineItems()->filterType(self::TYPE);
+        $productLineItems = $original->getLineItems()->filterType(LineItem::PRODUCT_LINE_ITEM_TYPE);
 
 //        $this->calculatorProduct($productLineItems, $context);
         foreach ($productLineItems as $productLineItem) {
@@ -87,7 +87,7 @@ class SwagPromotionCartProcess implements CartProcessorInterface, CartDataCollec
                 (new PriceCollection([$productLineItem->getPrice(), $productLineItem->getChildren()->getPrices()->sum()]))->sum()
             );
 
-            $toCalculate->add($productLineItem);
+//            $toCalculate->add($productLineItem);
         }
 
 
