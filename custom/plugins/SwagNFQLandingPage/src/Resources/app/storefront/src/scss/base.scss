@@ -1,0 +1,9 @@
+
+.cms-block-image-text-bubble .cms-element-image .cms-image-container, .cms-block-image-bubble-row .cms-element-image .cms-image-container {
+    width: 120px;
+    background-color: #dcebf3;
+}
+
+.cms-element-image .cms-image-container.is-cover .cms-image {
+    object-fit: none;
+}
