@@ -1,0 +1,4 @@
+storefront:
+    csrf:
+        enabled: true   // true/false to turn protection on/off
+        mode: ajax      // Valid modes are `twig` or `ajax`
